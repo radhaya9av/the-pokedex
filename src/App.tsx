@@ -2,7 +2,12 @@ import Background from './components/Background'
 import Footer from './sections/Footer'
 import Navbar from './sections/Navbar'
 import "./scss/index.scss"
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import Search from './pages/Search'
+import MyList from './pages/MyList'
+import About from './pages/About'
+import Compare from './pages/Compare'
+import Pokemon from './pages/Pokemon'
 
 function App() {
 

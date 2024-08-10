@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import pokeballIcon from "../assets/pokeball-icon.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
 
@@ -28,6 +28,22 @@ function Navbar() {
     },
   ];
 
+  const location = useLocation();
+
+  useEffect(() => {
+    const index = navigationRoutes.findIndex(({ route }) =>
+      location.pathname.includes(route)
+    );
+    ul(index);
+  }, [location.pathname, navigationRoutes]);
+
+  function ul(index: number) {
+    var underlines = document.querySelectorAll<HTMLElement>(".underline");
+    for (var i = 0; i < underlines.length; i++) {
+      underlines[i].style.transform = "translate3d(" + index * 100 + "%,0,0)";
+    }
+  }
+
   return (
     <nav>
       <div className="block">
@@ -35,13 +51,16 @@ function Navbar() {
       </div>
       <div className="data">
         <ul>
-          {navigationRoutes.map(({ name, route }, index) => {
+          <div className="underline"></div>
+          <div className="underline"></div>
+          <div className="underline"></div>
+        {navigationRoutes.map(({ name, route }, index) => {
             return (
               <Link to={route} key={index} >
                 <li>{name}</li>
               </Link>
             );
-          })}
+        })}
         </ul>
       </div>
       <div className="block">
