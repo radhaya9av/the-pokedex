@@ -1,6 +1,6 @@
 const Wrapper = () => {
   return (
-    <div>Wrapper</div>
+    <div className = "content">Wrapper</div>
   )
 }
 
